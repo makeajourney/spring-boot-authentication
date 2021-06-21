@@ -5,10 +5,14 @@ spring:
       path: /h2-console
 
   datasource:
-    url: jdbc:h2:~/test;
+    url: jdbc:h2:mem:testdb/test
     driver-class-name: org.h2.Driver
     username: sa
     password:
+    initialize: true
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+
+auth:
+  secret-key: wXRdA1sqbBKYJClS

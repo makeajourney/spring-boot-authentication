@@ -25,9 +25,12 @@ class WebSecurityConfig(
         http
             .httpBasic().disable()
             .csrf().disable()
+            .headers().frameOptions().disable() // for h2-console
+            .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
+            .antMatchers("/login", "/signup", "/console/**").permitAll()
             .anyRequest().permitAll()
             .and()
 //            .addFilterBefore(JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
