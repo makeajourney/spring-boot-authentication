@@ -21,11 +21,12 @@ class Member (
     val id: Long = 0,
 
     @Column(unique = true)
-    private val email: String,
+    val email: String,
 
-    private val password: String,
+    @Column(length = 255)
+    val password: String,
 
-): UserDetails {
+) {
 
     @ElementCollection
     val role = mutableListOf(Role.USER)
@@ -35,17 +36,5 @@ class Member (
 
     fun addRole(newRole: Role) = role.add(newRole)
 
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> = role
-
-    override fun getPassword() = this.password
-
-    override fun getUsername() = this.email
-
-    override fun isAccountNonExpired() = true
-
-    override fun isAccountNonLocked() = true
-
-    override fun isCredentialsNonExpired() = true
-
-    override fun isEnabled() = true
+    fun getUsername() = this.email
 }

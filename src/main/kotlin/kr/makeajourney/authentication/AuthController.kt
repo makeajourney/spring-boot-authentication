@@ -21,9 +21,4 @@ class AuthController(
     fun refresh(@RequestBody token: String): AuthToken {
         return authService.getAuthTokenWithRefreshToken(token)
     }
-
-    @PostMapping("/signup")
-    fun signUp(@RequestBody request: LoginRequest) {
-        authService.signUp(request.username, request.password)
-    }
 }

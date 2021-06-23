@@ -19,9 +19,10 @@ class WebSecurityConfig(
     override fun configure(web: WebSecurity) {
         web.ignoring()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-            .antMatchers("/login", "/signup","/refresh")    // auth
-            .antMatchers("/console/**")     // h2 console
+            .antMatchers("/login", "/signup", "/refresh")    // auth
+            .antMatchers("/h2-console/**")     // h2 console
     }
+
     override fun configure(http: HttpSecurity) {
         http
             .httpBasic().disable()
