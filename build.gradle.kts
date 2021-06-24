@@ -25,6 +25,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     runtimeOnly("com.h2database:h2")
+
+    // documentation
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
 }

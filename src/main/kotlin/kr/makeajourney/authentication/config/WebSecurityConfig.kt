@@ -1,5 +1,7 @@
-package kr.makeajourney.authentication
+package kr.makeajourney.authentication.config
 
+import kr.makeajourney.authentication.JwtAuthenticationFilter
+import kr.makeajourney.authentication.JwtTokenProvider
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.security.authentication.AuthenticationManager
@@ -20,6 +22,18 @@ class WebSecurityConfig(
         web.ignoring()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
             .antMatchers("/login*/**", "/signup*/**", "/refresh*/**")    // auth
+
+            // swagger
+            .antMatchers("/v1/api-docs/**")
+            .antMatchers("/v2/api-docs/**")
+            .antMatchers("/configuration/ui")
+            .antMatchers("/configuration/security")
+            .antMatchers("/swagger-resources/**")
+            .antMatchers("/swagger-ui/**")
+            .antMatchers("/swagger-ui.html")
+            .antMatchers("/webjars/**")
+            .antMatchers("/favicon.*")
+
             .antMatchers("/h2-console/**")     // h2 console
     }
 
